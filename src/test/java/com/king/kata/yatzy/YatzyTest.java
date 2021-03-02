@@ -63,7 +63,13 @@ public class YatzyTest {
 	}
 	@Test
 	public void getTwoPairs(){
-		YatzyRoll roll=new YatzyRoll(3,3,4,5,5);
+		YatzyRoll roll=new YatzyRoll(3,5,3,4,5);
 		assertEquals(16,yatzyScorer.calculateScore(Category.TWOPAIRS,roll));
+
+	}
+	@Test
+	public void getThreeOfaKind(){
+		YatzyRoll roll=new YatzyRoll(5,3,5,3,5);
+		assertEquals(15,yatzyScorer.calculateScore(Category.THREEOFKIND,roll));
 	}
 }

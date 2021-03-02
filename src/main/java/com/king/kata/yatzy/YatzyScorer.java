@@ -20,7 +20,7 @@ public class YatzyScorer {
 			case SIXES -> getByNumber(Category.SIXES,roll);
 			case PAIR ->getByPair(roll);
 			case TWOPAIRS -> getByTwoPairs(roll);
-			case THREEOFKIND -> 0;
+			case THREEOFKIND -> getThreeOfKind(roll);
 		};
 	}
 	public int sumAll(YatzyRoll roll) {
@@ -52,9 +52,14 @@ public class YatzyScorer {
 				.filter(i-> cut.get(i - 1).equals(cut.get(i)))
 				.map(i->cut.get(i)*2)
 				.reduce(0,Integer::sum);
-
+	}
+	public int getThreeOfKind(YatzyRoll roll){
+		List<Integer> sorted= Arrays.stream(roll.getDice()).sorted().boxed().collect(Collectors.toList());
+		return IntStream.range(1,sorted.size()-1)
+				.filter(i-> sorted.get(i - 1) == sorted.get(i) && sorted.get(i)==sorted.get(i+1))
+				.map(i-> sorted.get(i)*3)
+				.reduce(0,Integer::sum);
 
 	}
-
 
 }
