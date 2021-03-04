@@ -21,8 +21,15 @@ public class YatzyScorer {
 			case PAIR ->getByPair(roll);
 			case TWOPAIRS -> getByTwoPairs(roll);
 			case THREEOFKIND -> getThreeOfKind(roll);
+			case FOUROFKIND -> getFourOfKind(roll);
+			case SMALLSTRAIGHT -> getSmallStraight(roll);
+			case LARGESTRAIGHT -> getLargeStraight(roll);
+			case FULLHOUSE -> getFullHouse(roll);
 		};
 	}
+
+
+
 	public int sumAll(YatzyRoll roll) {
 
 		return Arrays.stream(roll.getDice()).sum();
@@ -60,6 +67,26 @@ public class YatzyScorer {
 				.map(i-> sorted.get(i)*3)
 				.reduce(0,Integer::sum);
 
+	}
+	public int getFourOfKind(YatzyRoll roll){
+		List<Integer> sorted= Arrays.stream(roll.getDice()).sorted().boxed().collect(Collectors.toList());
+		return IntStream.range(1,sorted.size()-2)
+				.filter(i-> sorted.get(i - 1) == sorted.get(i) && sorted.get(i)==sorted.get(i+1)&& sorted.get(i)==sorted.get(i+2))
+				.map(i-> sorted.get(i)*4)
+				.reduce(0,Integer::sum);
+
+	}
+	private int getFullHouse(YatzyRoll roll) {
+		return 0;
+	}
+
+	private int getLargeStraight(YatzyRoll roll) {
+		return 0;
+	}
+
+	private int getSmallStraight(YatzyRoll roll) {
+		Arrays.stream(roll.getDice()).sorted();
+		return 0;
 	}
 
 }

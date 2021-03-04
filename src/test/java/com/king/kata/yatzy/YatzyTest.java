@@ -72,4 +72,9 @@ public class YatzyTest {
 		YatzyRoll roll=new YatzyRoll(5,3,5,3,5);
 		assertEquals(15,yatzyScorer.calculateScore(Category.THREEOFKIND,roll));
 	}
+	@Test
+	public void getFourOfaKind(){
+		YatzyRoll roll=new YatzyRoll(5,3,5,5,5);
+		assertEquals(20,yatzyScorer.calculateScore(Category.FOUROFKIND,roll));
+	}
 }

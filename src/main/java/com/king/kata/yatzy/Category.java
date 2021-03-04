@@ -11,7 +11,11 @@ public enum Category {
 	SIXES(6),
 	PAIR(7),
 	TWOPAIRS(8),
-	THREEOFKIND(9);
+	THREEOFKIND(9),
+	FOUROFKIND(10),
+	SMALLSTRAIGHT(11),
+	LARGESTRAIGHT(12),
+	FULLHOUSE(13);
 	private final int id;
 	Category(int id) { this.id = id; }
 	public int getValue() { return id; }
